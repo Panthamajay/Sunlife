@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  tasks:
+    - name: create a cloudformation stack
+      cloudformation:
+        stack_name: "ansiblecft"
+        state: "present"
+        region: "us-east-1"
+        disable_rollback: true
+        template: "files/stratch.json"
+        template_parameters:
+          NotebookInstanceName: "notebookname"
+          NotebookInstanceType: "ml.t2.medium"
+          SageMakerRoleArn: "arn:aws:iam::130159455024:role/service-role/AmazonSageMaker-ExecutionRole-20171220T151680"
+        tags:
+          Stack: "ansible_CFT_stack"

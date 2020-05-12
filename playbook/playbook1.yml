@@ -9,7 +9,7 @@
         disable_rollback: true
         template: "files/scratch.json"
         template_parameters:
-          NotebookInstanceName: "notebookname"
+          NotebookInstanceName: "firstnotebook"
           NotebookInstanceType: "ml.t2.medium"
           SageMakerRoleArn: "arn:aws:iam::130159455024:role/service-role/AmazonSageMaker-ExecutionRole-20171220T151680"
         tags:

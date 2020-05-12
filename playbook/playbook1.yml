@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: ansibleservers
   tasks:
     - name: create a cloudformation stack
       cloudformation:

@@ -2,13 +2,20 @@
 - hosts: all
   remote_user: ubuntu
   tasks:
+    - name: Copy file from control node to managed node with owner and permissions
+      copy:
+      src: files/scratch.json
+      dest: /home/ubuntu/scratch.json
+      owner: ubuntu
+      group: ubuntu
+      mode: preserve
     - name: create a cloudformation stack
       cloudformation:
         stack_name: "ansiblecft"
         state: "present"
         region: "us-east-1"
         disable_rollback: true
-        template: "files/scratch.json"
+        template: "/home/ubuntu/scratch.json"
         template_parameters:
           NotebookInstanceName: "samplenotebook"
           NotebookInstanceType: "ml.t2.medium"

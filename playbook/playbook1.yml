@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: jumper
   tasks:
     - name: create a cloudformation stack
       cloudformation:

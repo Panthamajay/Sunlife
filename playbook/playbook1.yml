@@ -17,7 +17,7 @@
         disable_rollback: true
         template: "/home/ubuntu/scratch.json"
         template_parameters:
-          NotebookInstanceName: "samplenotebook"
+          NotebookInstanceName: "latestnotebook"
           NotebookInstanceType: "ml.t2.medium"
           SageMakerRoleArn: "arn:aws:iam::130159455024:role/service-role/AmazonSageMaker-ExecutionRole-20171220T151680"
         tags:

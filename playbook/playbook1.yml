@@ -22,7 +22,7 @@
           Stack: ansible-CFT-stack
         template: /home/ubuntu/scratch.json
         template_parameters: 
-          NotebookInstanceName: phd_notebook
+          NotebookInstanceName: phd-notebook
           NotebookInstanceType: ml.t2.medium
           SageMakerRoleArn: "arn:aws:iam::130159455024:role/service-role/AmazonSageMaker-ExecutionRole-20171220T151680"
       name: "create a cloudformation stack"

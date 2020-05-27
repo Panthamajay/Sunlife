@@ -16,13 +16,13 @@
         disable_rollback: true
         notification_arns: "arn:aws:sns:us-east-1:130159455024:Sunlife_Notifier_SNS"
         region: us-east-1
-        stack_name: ansible-latest-cft
+        stack_name: new-ansi-cft
         state: present
         tags: 
           Stack: ansible-CFT-stack
         template: /home/ubuntu/scratch.json
         template_parameters: 
-          NotebookInstanceName: phd-notebook
+          NotebookInstanceName: late-notebook
           NotebookInstanceType: ml.t2.medium
           SageMakerRoleArn: "arn:aws:iam::130159455024:role/service-role/AmazonSageMaker-ExecutionRole-20171220T151680"
       name: "create a cloudformation stack"

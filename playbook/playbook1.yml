@@ -3,7 +3,7 @@
   remote_user: ubuntu
   tasks:
     - name: Copy file from control node to managed node with owner and permissions
-      copy: 
+      copy:
         src: files/scratch.json
         dest: /home/ubuntu/scratch.json
         owner: ubuntu
@@ -11,14 +11,15 @@
         mode: preserve
     - name: create a cloudformation stack
       cloudformation:
-        stack_name: "ansiblecft"
+        stack_name: "ansible-latest-cft"
         state: "present"
         region: "us-east-1"
         disable_rollback: true
         template: "/home/ubuntu/scratch.json"
         template_parameters:
-          NotebookInstanceName: "latestnotebook"
+          NotebookInstanceName: "phd_notebook"
           NotebookInstanceType: "ml.t2.medium"
           SageMakerRoleArn: "arn:aws:iam::130159455024:role/service-role/AmazonSageMaker-ExecutionRole-20171220T151680"
         tags:
           Stack: "ansible-CFT-stack"
+	notification_arns: "arn:aws:sns:us-east-1:130159455024:Sunlife_Notifier_SNS"

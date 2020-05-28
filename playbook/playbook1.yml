@@ -1,5 +1,7 @@
 --- 
 - 
+  hosts: localhost
+  remote_user: ubuntu
   tasks: 
     - 
       name: "calling the email microervice"
@@ -10,9 +12,3 @@
         return_content: true
         src: files/email_body.json
         url: "http://52.91.234.13:5000/email"
-        
-        
-        
-        
-        
-        

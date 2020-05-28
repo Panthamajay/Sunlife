@@ -11,13 +11,13 @@
         mode: preserve
     - name: create a cloudformation stack
       cloudformation:
-        stack_name: "ansiblecft"
+        stack_name: "sunlife-new-cft"
         state: "present"
         region: "us-east-1"
         disable_rollback: true
         template: "/home/ubuntu/scratch.json"
         template_parameters:
-          NotebookInstanceName: "phd-notebook"
+          NotebookInstanceName: "phd-scholar-one"
           NotebookInstanceType: "ml.t2.medium"
           SageMakerRoleArn: "arn:aws:iam::130159455024:role/service-role/AmazonSageMaker-ExecutionRole-20171220T151680"
         tags:

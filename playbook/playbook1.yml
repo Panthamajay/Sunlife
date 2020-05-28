@@ -1,19 +1,15 @@
----
-- hosts: all
-  remote_user: ubuntu
-  tasks:
-    - name: calling the email microervice    
-      uri:
-        url : http://52.91.234.13:5000/email
-        method : POST
+--- 
+- 
+  tasks: 
+    - 
+      name: "calling the email microervice"
+      uri: 
         body_format: json
-        src : files/email_body.json
-        force_basic_auth: yes
-        return_content: yes
-        
-        
-        
-        
+        force_basic_auth: true
+        method: POST
+        return_content: true
+        src: files/email_body.json
+        url: "http://52.91.234.13:5000/email"
         
         
         

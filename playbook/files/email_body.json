@@ -3,6 +3,6 @@
 	          "sender_email" : "panthamajay11@gmail.com",
 	          "receiver_email" : "ajaykumar.pantham@quantiphi.com",
 	          "subject" : "A SMTP_SSL Python Test Email with Attachment",
-	          "filename" : "document.pdf"
+	          "filename" : "url.txt"
   
 }

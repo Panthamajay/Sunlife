@@ -17,7 +17,7 @@
       disable_rollback: true
       template: "/home/ubuntu/scratch.json"
       template_parameters:
-        NotebookInstanceName: "phd-scholar"
+        NotebookInstanceName: "scholar-notes"
         NotebookInstanceType: "ml.t2.medium"
         SageMakerRoleArn: "arn:aws:iam::130159455024:role/service-role/AmazonSageMaker-ExecutionRole-20171220T151680"
       tags:
@@ -27,20 +27,13 @@
   - name: testing with debug
     debug: 
       var: result
-  - name:  Get stack outputs, when you have the stack name available as a fact
-    set_fact:
-      stack_name: sun-cft
-  - name: getting cft info
-    cloudformation_info:
-      stack_name: "{{ stack_name }}"
-      region: "us-east-1"
-      all_facts: true
-    register: my_stack
-  - name: debugging cft info
+    when: result['output'] == "Stack CREATE complete" 
+  - name: Iff stack is complete then trigger email microservice
     debug:
-      var: my_stack
-      
-        
+      msg: "GO AHEAD TO TRIGGER EMAIL"
+    when: result['output'] == "Stack CREATE complete"
+     
+     
         
         
         

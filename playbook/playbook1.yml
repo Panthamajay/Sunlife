@@ -11,7 +11,7 @@
       mode: preserve
   - name: create a cloudformation stack
     cloudformation:
-      stack_name: "demo-sunlife-cft"
+      stack_name: "sunlife-cft"
       state: "present"
       region: "us-east-1"
       disable_rollback: true

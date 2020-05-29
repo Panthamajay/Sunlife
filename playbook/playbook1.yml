@@ -11,13 +11,13 @@
       mode: preserve
   - name: create a cloudformation stack
     cloudformation:
-      stack_name: "sunlife-cft"
+      stack_name: "sun-cft"
       state: "present"
       region: "us-east-1"
       disable_rollback: true
       template: "/home/ubuntu/scratch.json"
       template_parameters:
-        NotebookInstanceName: "demo-phd-scholar"
+        NotebookInstanceName: "phd-scholar"
         NotebookInstanceType: "ml.t2.medium"
         SageMakerRoleArn: "arn:aws:iam::130159455024:role/service-role/AmazonSageMaker-ExecutionRole-20171220T151680"
       tags:
@@ -29,7 +29,7 @@
       var: result
   - name:  Get stack outputs, when you have the stack name available as a fact
     set_fact:
-      stack_name: sunlife-cft
+      stack_name: sun-cft
   - name: testing a cft info
     cloudformation_info:
       stack_name: "{{ stack_name }}"

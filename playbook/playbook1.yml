@@ -33,6 +33,7 @@
   - name: testing a cft info
     cloudformation_info:
       stack_name: "{{ stack_name }}"
+      region: "us-east-1"
       all_facts: true
     register: my_stack
   - name: debugging

@@ -25,8 +25,7 @@
       notification_arns: "arn:aws:sns:us-east-1:130159455024:Sunlife_Notifier_SNS"
     register: result
   - name: testing with debug
-    debug:
-      msg: "printing the msgs next" 
+    debug: 
       var: result
   - name:  Get stack outputs, when you have the stack name available as a fact
     set_fact:

@@ -2,36 +2,44 @@
 - hosts: all
   remote_user: ubuntu
   tasks:
-    - name: Copy file from control node to managed node with owner and permissions
-      copy:
-        src: files/scratch.json
-        dest: /home/ubuntu/scratch.json
-        owner: ubuntu
-        group: ubuntu
-        mode: preserve
-    - name: create a cloudformation stack
-      cloudformation:
-        stack_name: "latest-sun-cft"
-        state: "present"
-        region: "us-east-1"
-        disable_rollback: true
-        template: "/home/ubuntu/scratch.json"
-        template_parameters:
-          NotebookInstanceName: "phd-scholar-two"
-          NotebookInstanceType: "ml.t2.medium"
-          SageMakerRoleArn: "arn:aws:iam::130159455024:role/service-role/AmazonSageMaker-ExecutionRole-20171220T151680"
-        tags:
-          Stack: "ansible-CFT-stack"
-        notification_arns: "arn:aws:sns:us-east-1:130159455024:Sunlife_Notifier_SNS"
-    - name: "calling the email microervice"
-      uri: 
-        body_format: json
-        force_basic_auth: true
-        method: POST
-        return_content: true
-        src: files/email_body.json
-        url: "http://52.91.234.13:5000/email"
-        
+  - name: Copy file from control node to managed node with owner and permissions
+    copy:
+      src: files/scratch.json
+      dest: /home/ubuntu/scratch.json
+      owner: ubuntu
+      group: ubuntu
+      mode: preserve
+  - name: create a cloudformation stack
+    cloudformation:
+      stack_name: "demo-sunlife-cft"
+      state: "present"
+      region: "us-east-1"
+      disable_rollback: true
+      template: "/home/ubuntu/scratch.json"
+      template_parameters:
+        NotebookInstanceName: "demo-phd-scholar"
+        NotebookInstanceType: "ml.t2.medium"
+        SageMakerRoleArn: "arn:aws:iam::130159455024:role/service-role/AmazonSageMaker-ExecutionRole-20171220T151680"
+      tags:
+        Stack: "ansible-CFT-stack"
+      notification_arns: "arn:aws:sns:us-east-1:130159455024:Sunlife_Notifier_SNS"
+      register: result
+  - name: testing with debug
+    debug:
+      msg: "printing the msgs next" 
+      var: result
+  - name:  Get stack outputs, when you have the stack name available as a fact
+    set_fact:
+      stack_name: sunlife-cft
+  - name: testing a cft info
+    cloudformation_info:
+      stack_name: "{{ stack_name }}"
+      all_facts: true
+      register: my_stack
+  - name: debugging
+    debug:
+      msg: "{{ my_stack.cloudformation[stack_name].stack_outputs }}"
+      
         
         
         

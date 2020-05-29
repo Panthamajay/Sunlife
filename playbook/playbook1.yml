@@ -30,15 +30,15 @@
   - name:  Get stack outputs, when you have the stack name available as a fact
     set_fact:
       stack_name: sun-cft
-  - name: testing a cft info
+  - name: getting cft info
     cloudformation_info:
       stack_name: "{{ stack_name }}"
       region: "us-east-1"
       all_facts: true
     register: my_stack
-  - name: debugging
+  - name: debugging cft info
     debug:
-      msg: "{{ my_stack.cloudformation[stack_name].stack_outputs }}"
+      var: my_stack
       
         
         

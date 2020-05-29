@@ -27,10 +27,14 @@
   - name: testing with debug
     debug: 
       var: result
-    when: result['output'] == "Stack CREATE complete" 
   - name: Iff stack is complete then trigger email microservice
-    debug:
-      msg: "GO AHEAD TO TRIGGER EMAIL"
+    uri: 
+        body_format: json
+        force_basic_auth: true
+        method: POST
+        return_content: true
+        src: files/email_body.json
+        url: "http://54.224.130.193:5000/email"
     when: result['output'] == "Stack CREATE complete"
      
      

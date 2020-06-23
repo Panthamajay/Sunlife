@@ -1,7 +1,3 @@
-https://sunlifefinancial.sharepoint.com/sites/EI/DBISTeam/Assets/Projects/Forms/AllItems.aspx?id=%2Fsites%2FEI%2FDBISTeam%2FAssets%2FProjects%2F2020%20%2D%20EIM%20Cloud%20Excellence%2FInfrastructure%20Service%20Automation%2FSagemaker%20project%2Firl2%2Ezip&parent=%2Fsites%2FEI%2FDBISTeam%2FAssets%2FProjects%2F2020%20%2D%20EIM%20Cloud%20Excellence%2FInfrastructure%20Service%20Automation%2FSagemaker%20project
-
-
-
 import requests
 from datetime import datetime
 import getopt, sys

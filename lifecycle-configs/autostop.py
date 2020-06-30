@@ -87,6 +87,7 @@ H_sec=(H_now - OUT_HOUR)*3600
 M_sec=(M_now - OUT_MIN)*60
 Sec=(S_now - OUT_SEC)
 Total_sec = H_sec + M_sec + Sec
+print("Total sec is :",Total_sec)
 if  Total_sec > time : 
     # This is hitting Jupyter's sessions API: https://github.com/jupyter/jupyter/wiki/Jupyter-Notebook-Server-API#Sessions-API
     response = requests.get('https://localhost:'+port+'/api/sessions', verify=False)

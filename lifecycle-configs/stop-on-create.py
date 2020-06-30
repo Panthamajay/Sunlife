@@ -42,12 +42,15 @@ def find_status():
     status = client.describe_notebook_instance(
         NotebookInstanceName=get_notebook_name()
     )['NotebookInstanceStatus']
+    print("status is :",status)
     return status
 
 for i in range(4):
+    print("entered the for loop:", i)
     if(find_status()=="InService"):
-        print('Closing idle notebook')
+        print('Closing notebook after creation')
         client.stop_notebook_instance(
         NotebookInstanceName=get_notebook_name()
             )
+        break;
     time.sleep(60)

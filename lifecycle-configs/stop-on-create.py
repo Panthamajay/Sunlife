@@ -44,7 +44,7 @@ def find_status():
     )['NotebookInstanceStatus']
     return status
 
-for (i=1;i<5;i++)
+for i in range(4):
     if(find_status()=="InService"):
         print('Closing idle notebook')
         client.stop_notebook_instance(

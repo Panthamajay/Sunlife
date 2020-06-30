@@ -94,7 +94,6 @@ if  Total_sec > time :
     data = response.json()
     print("DATA is:",data)
     if len(data) > 0:
-        print("ëntered into len func")
         for notebook in data:
             # Idleness is defined by Jupyter
             # https://github.com/jupyter/notebook/issues/4634

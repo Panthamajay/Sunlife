@@ -45,12 +45,13 @@ def find_status():
     print("status is :",status)
     return status
 
-for i in range(10):
-    print("entered the for loop:", i)
+    
+while(1):
+    print("entered the while loop:")
     y = datetime.now()
     print("loop time is : ",y)
     if(find_status()=="InService"):
-        print("Closing notebook after creation")
+        print('Closing notebook after creation')
         client.stop_notebook_instance(
         NotebookInstanceName=get_notebook_name()
             )

@@ -32,7 +32,7 @@ M_now=x.minute
 S_now=x.second
 
 OUT_HOUR=12
-OUT_MIN=30
+OUT_MIN=40
 OUT_SEC=00
 
 # Read in command-line parameters

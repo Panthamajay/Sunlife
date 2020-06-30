@@ -4,6 +4,7 @@ import getopt, sys
 import urllib3
 import boto3
 import json
+import time
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -24,7 +25,7 @@ helpInfo = """-t, --time
     Help information
 """
 
-
+status = "Pending"
 x = datetime.now()
 
 print("Time is : ",x)
@@ -34,11 +35,19 @@ def get_notebook_name():
     with open(log_path, 'r') as logs:
         _logs = json.load(logs)
     return _logs['ResourceName']
-
-
-
-print('Closing idle notebook')
+    
 client = boto3.client('sagemaker')
-client.stop_notebook_instance(
-    NotebookInstanceName=get_notebook_name()
-   )
+
+def find_status():
+    status = client.describe_notebook_instance(
+        NotebookInstanceName=get_notebook_name()
+    )['NotebookInstanceStatus']
+    return status
+
+for (i=1;i<5;i++)
+    if(find_status()=="InService"):
+        print('Closing idle notebook')
+        client.stop_notebook_instance(
+        NotebookInstanceName=get_notebook_name()
+            )
+    time.sleep(60)

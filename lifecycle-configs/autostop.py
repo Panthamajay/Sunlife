@@ -31,8 +31,8 @@ H_now=x.hour
 M_now=x.minute
 S_now=x.second
 
-OUT_HOUR=13
-OUT_MIN=00
+OUT_HOUR=14
+OUT_MIN=30
 OUT_SEC=00
 
 # Read in command-line parameters

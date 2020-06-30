@@ -25,7 +25,7 @@ helpInfo = """-t, --time
     Help information
 """
 
-status = "Pending"
+
 x = datetime.now()
 
 print("Time is : ",x)

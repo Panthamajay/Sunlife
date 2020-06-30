@@ -1,0 +1,10 @@
+{
+  "stack_name" : "Sunlife-SG-execution-role-IAM-cft",
+  "region" : "us-east-1",
+  "RoleType" : "personal",
+   "RoleID" : "q511",
+  "CostCentre" : "cost centre",
+  "GovtClearance" : "false",
+  "template_path": "./q_slf_IAM_exec_cft.yaml"
+
+}

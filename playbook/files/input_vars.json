@@ -1,8 +1,0 @@
-{
-  "Environment" : "Dev",
-  "RoleType" : "project",
-   "RoleID" : "SLF-455",
-   "CostCentre" : "urjgergrengjen",
-    "GovtClearance": "true|false",
-    "stack_name" : "new_SG_execution_role_IAM_cft"
-}

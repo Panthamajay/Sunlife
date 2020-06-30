@@ -41,4 +41,3 @@ print('Closing idle notebook')
 client = boto3.client('sagemaker')
 client.stop_notebook_instance(
     NotebookInstanceName=get_notebook_name()
-)

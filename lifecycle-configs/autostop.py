@@ -26,12 +26,13 @@ helpInfo = """-t, --time
 
 
 x = datetime.now()
+print("CURRENT Time is : ",x)
 H_now=x.hour
 M_now=x.minute
 S_now=x.second
 
-OUT_HOUR=06
-OUT_MIN=10
+OUT_HOUR=12
+OUT_MIN=30
 OUT_SEC=00
 
 # Read in command-line parameters
@@ -126,4 +127,3 @@ if  Total_sec > time :
         )
     else:
         print('Notebook not idle. Pass.')
-    

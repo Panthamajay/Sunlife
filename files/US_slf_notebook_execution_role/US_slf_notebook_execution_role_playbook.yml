@@ -1,0 +1,30 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Loading required input parameters from input json
+      include_vars: US_slf_notebook_execution_role_input.json
+
+    - name: create a Sagemaker IAM execution  role stack for US_slf_aws_sagemaker_notebook
+      cloudformation:
+        stack_name: "{{ stack_name }}"
+        state: "present"
+        region: "{{ region }}"
+        disable_rollback: true
+        template: "{{ template_path }}"
+        template_parameters:
+          RoleType: "{{ RoleType }}"
+          RoleID: "{{ RoleID }}"
+          CostCentre: "{{ CostCentre }}"
+          GovtClearance: "{{ GovtClearance }}"
+        tags:
+          Stack: "{{ stack_name }}"
+      register: IAM_exec_role_cft_output
+
+    - name: printing the captured return result from execution of above task
+      debug:
+        var: IAM_exec_role_cft_output
+
+    - name: writing registered cft output into a file
+      copy:
+        content: "{{ IAM_exec_role_cft_output }}"
+        dest: US_slf_notebook_execution_role_cft_output_logs.log

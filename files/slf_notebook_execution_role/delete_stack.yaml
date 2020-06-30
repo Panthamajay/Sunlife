@@ -1,0 +1,22 @@
+---
+- hosts: localhost
+  tasks:
+    - name: delete stack
+      cloudformation:
+        stack_name: "{{ stack_name }}"
+        state: "absent"
+        region: "{{ region }}"
+      register: delete_stack_output
+    - name: printing the captured return result from execution of above task
+      debug:
+        var: delete_stack_output
+
+
+
+ansible-playbook -e '{"stack_name":"slf-aws-edtadmin-sagemaker-iam-execution-personal-q225","region":"ca-central-1"}'  delete_stack.yaml
+
+
+
+ansible-playbook -e '{"stack_name":"slf-aws-edtadmin-sagemaker-iam-execution-CSanalytics","region":"ca-central-1"}'  delete_stack.yaml
+
+slf-aws-edtadmin-sagemaker-iam-execution-CSanalytics

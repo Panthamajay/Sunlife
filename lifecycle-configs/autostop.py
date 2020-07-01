@@ -31,7 +31,7 @@ H_now=x.hour
 M_now=x.minute
 S_now=x.second
 
-OUT_HOUR=09
+OUT_HOUR=9
 OUT_MIN=00
 OUT_SEC=00
 

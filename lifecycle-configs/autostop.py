@@ -58,7 +58,7 @@ IN_SEC=00
 
 
 OUT_HOUR=17
-OUT_MIN=25
+OUT_MIN=00
 OUT_SEC=00
 
 # Read in command-line parameters

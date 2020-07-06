@@ -61,5 +61,7 @@ ansible-playbook -e '{"request_variable_access_to_prod":"Project Workspace","pro
 
 
 
+ansible-playbook -e '{"request_variable_access_to_prod":"Personal Workspace","request_variable_requested_for_acf2":"q11","Environment":"Prod","region":"ca-central-1"}'  playbook.yaml
+
 
 

@@ -4,9 +4,13 @@
   vars:
     access_type: "{{request_variable_access_to_prod}}"
     stack_name_prefix: slf-aws-edtadmin-sagemaker-iam-execution
+    environment_type: "{{ Environment }}"
     deployment_region: "{{ region }}"
-    slf_notebook_execution_role_template_url: "https://slf-ces-cloudformations-repo.s3.ca-central-1.amazonaws.com/sagemaker/slf_aws_sagemaker_notebook_execution_role_template.yaml"
-    US_slf_notebook_execution_role_template_url: "https://slf-ces-cloudformations-repo.s3.ca-central-1.amazonaws.com/sagemaker/US_slf_aws_sagemaker_notebook_execution_role_template.yaml"
+    dev_prod_slf_notebook_execution_role_template_url: "{{ dev_prod_slf_notebook_execution_role_template_url }}"
+    US_dev_prod_slf_notebook_execution_role_template_url: "{{ US_dev_prod_slf_notebook_execution_role_template_url }}"
+    lab_slf_notebook_execution_role_template_url: "{{ lab_slf_notebook_execution_role_template_url }}"
+    US_lab_slf_notebook_execution_role_template_url: "{{ US_lab_slf_notebook_execution_role_template_url }}"
+    
   tasks:
     - name: Get RoleType,RoleID and stack_name when user requests for a personal notebook
       set_fact:
@@ -22,15 +26,25 @@
         stack_name : "{{ stack_name_prefix }}-{{project_code}}"
       when: access_type != "Personal Workspace"
     
-    - name: Get cloudformation template url based on region "ca-central-1"
+    - name: Get cloudformation template url when environment "Dev/Prod"  & region "ca-central-1"
       set_fact:
-        template_url: "{{ slf_notebook_execution_role_template_url }}"
-      when: deployment_region == "ca-central-1"
+        template_url: "{{ dev_prod_slf_notebook_execution_role_template_url }}"
+      when: (environment_type == "Dev" or environment_type == "Prod") and deployment_region == "ca-central-1"  
     
-    - name: Get cloudformation template url based on region "us-east-1"
+    - name: Get cloudformation template url when environment "Lab"  & region "ca-central-1"
       set_fact:
-        template_url: "{{ US_slf_notebook_execution_role_template_url }}"
-      when: deployment_region == "us-east-1" 
+        template_url: "{{ lab_slf_notebook_execution_role_template_url }}"
+      when: environment_type == "Lab" and deployment_region == "ca-central-1"
+    
+    - name: Get cloudformation template url when environment "dev/prod" & region "us-east-1"
+      set_fact:
+        template_url: "{{ US_dev_prod_slf_notebook_execution_role_template_url }}"
+      when: (environment_type == "Dev" or environment_type == "Prod") and deployment_region == "us-east-1" 
+    
+    - name: Get cloudformation template url when environment "Lab" & region "us-east-1"
+      set_fact:
+        template_url: "{{ US_lab_slf_notebook_execution_role_template_url }}"
+      when: environment_type == "Lab"  and deployment_region == "us-east-1"
     
     - name: create a Sagemaker execution IAM role stack for slf_aws_sagemaker_notebook
       cloudformation:
@@ -41,6 +55,7 @@
         role_arn: "{{ iam_role_arn }}"
         template_url: "{{ template_url }}"
         template_parameters:
+          Environment: "{{ Environment }}"
           RoleType: "{{ RoleType }}"
           RoleID: "{{ RoleID }}"
           CostCentre: "{{ request_variable_cost_centre_personal_or_project }}"

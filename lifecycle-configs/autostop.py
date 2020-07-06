@@ -58,7 +58,7 @@ IN_SEC=00
 
 
 OUT_HOUR=17
-OUT_MIN=00
+OUT_MIN=10
 OUT_SEC=00
 
 # Read in command-line parameters
@@ -110,7 +110,7 @@ def get_notebook_name():
 
 
 
-if H_now>OUT_HOUR and H_now<24:
+if H_now>=OUT_HOUR and H_now<24:
     H_sec=(H_now - OUT_HOUR)*3600
     M_sec=(M_now - OUT_MIN)*60
     Sec=(S_now - OUT_SEC)

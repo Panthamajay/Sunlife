@@ -1,0 +1,15 @@
+{
+  "dev_prod_slf_notebook_execution_role_template_url": "https://slf-ces-cloudformations-repo.s3.ca-central-1.amazonaws.com/sagemaker/slf_aws_sagemaker_notebook_execution_role_template.yaml",
+  "US_dev_prod_slf_notebook_execution_role_template_url": "https://slf-ces-cloudformations-repo.s3.ca-central-1.amazonaws.com/sagemaker/US_slf_aws_sagemaker_notebook_execution_role_template.yaml",
+  "lab_slf_notebook_execution_role_template_url": "https://s3.ca-central-1.amazonaws.com/slf-ca-lab-workspace/CloudFormation/slf_aws_sagemaker_notebook_execution_role_template.yaml",
+  "US_lab_slf_notebook_execution_role_template_url": "https://s3.ca-central-1.amazonaws.com/slf-ca-lab-workspace/CloudFormation/US_slf_aws_sagemaker_notebook_execution_role_template.yaml",
+  
+  "request_variable_access_to_prod":"Personal Workspace", 
+  "request_variable_requested_for_acf2":"q225",
+  "region":"ca-central-1",
+  "iam_role_arn":"arn:aws:iam::723924249665:role/slf_aws_execution_sagemaker_cloudformation_iam_role",
+  "Environment":"Prod",
+  "request_variable_cost_centre_personal_or_project":"Cost-Centre",
+  "GovtClearance":"false"
+  
+}

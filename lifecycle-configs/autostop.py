@@ -42,11 +42,11 @@ logging.info("Default time with timezone is : %s",now)
 
 
 """ astimezone is used to convert datetime from one timezone to another """
-#tz = pytz.timezone('America/Toronto')
-tz = pytz.timezone('Asia/Kolkata')
+tz = pytz.timezone('America/Toronto')
+#tz = pytz.timezone('Asia/Kolkata')
 now = now.astimezone(tz)
-#print ("EST time is:",now)
-logging.info("IST time is: %s",now)
+print ("EST time is:",now)
+#logging.info("IST time is: %s",now)
 
 
 H_now=now.hour
@@ -56,13 +56,13 @@ S_now=now.second
 logging.info("Hour is : %s",H_now)
 
 """ Business hours start time """
-IN_HOUR=9
+IN_HOUR=6
 IN_MIN=00
 IN_SEC=00
 
 """ Business hours end time """
-OUT_HOUR=18
-OUT_MIN=00
+OUT_HOUR=8
+OUT_MIN=10
 OUT_SEC=00
 
 """ Read in command-line parameters """

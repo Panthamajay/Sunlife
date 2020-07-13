@@ -65,3 +65,12 @@ ansible-playbook -e '{"request_variable_access_to_prod":"Personal Workspace","re
 
 
 
+
+
+
+
+
+ansible-playbook playbook.yaml -e 'ansible_python_interpreter=/usr/bin/python3'
+
+
+

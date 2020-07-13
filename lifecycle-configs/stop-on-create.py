@@ -5,6 +5,8 @@ import urllib3
 import boto3
 import json
 import time
+import logging
+logging.basicConfig(level=logging.INFO)
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -28,7 +30,7 @@ helpInfo = """-t, --time
 
 x = datetime.now()
 
-print("Time is : ",x)
+logging.info("Current time is : %s ",x)
 
 def get_notebook_name():
     log_path = '/opt/ml/metadata/resource-metadata.json'
@@ -42,16 +44,12 @@ def find_status():
     status = client.describe_notebook_instance(
         NotebookInstanceName=get_notebook_name()
     )['NotebookInstanceStatus']
-    print("status is :",status)
     return status
 
     
 while(1):
-    print("entered the while loop:")
-    y = datetime.now()
-    print("loop time is : ",y)
     if(find_status()=="InService"):
-        print('Closing notebook after creation')
+        logging.info('Closing notebook after creation')
         client.stop_notebook_instance(
         NotebookInstanceName=get_notebook_name()
             )
